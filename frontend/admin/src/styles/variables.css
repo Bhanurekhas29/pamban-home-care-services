@@ -1,0 +1,16 @@
+:root {
+  --pink: #fa0073;
+  --pink-dark: #d10062;
+  --pink-soft: #fff0f7;
+  --navy: #1b2942;
+  --slate: #4b5669;
+  --line: #e3e7ee;
+  --bg: #f4f6fa;
+  --white: #ffffff;
+  --danger: #d92d20;
+  --success: #12805c;
+  --font-heading: 'Outfit', sans-serif;
+  --font-text: 'Manrope', sans-serif;
+  --radius: 10px;
+  --sidebar-width: 260px;
+}

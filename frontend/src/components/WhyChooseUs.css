@@ -1,0 +1,52 @@
+.why { background: var(--navy); position: relative; overflow: hidden; }
+.why::before {
+  content: ''; position: absolute; left: 50%; top: 52%; width: 520px; height: 520px; transform: translate(-50%, -50%);
+  border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0) 68%); pointer-events: none;
+}
+/* an uploaded picture replaces the plain navy and shows as uploaded */
+.why.has-bg { background-color: var(--navy); background-size: cover; background-position: center; background-repeat: no-repeat; }
+.why.has-bg::before { display: none; }
+/* optional dark layer for ordinary photos, switched on in the admin */
+.why.dark-layer::after { content: ''; position: absolute; inset: 0; background: rgba(14, 22, 40, .68); pointer-events: none; }
+.why .container { position: relative; z-index: 1; }
+.why-head { text-align: center; max-width: 680px; margin: 0 auto 36px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.why .section-title { color: var(--white); }
+.why-sub { color: rgba(255, 255, 255, .88); font-size: 17px; }
+
+.why-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+
+/* frosted-glass cards: see-through, blurred, with a bright top edge and a light sheen that sweeps across on hover */
+.why-card {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 34px 24px;
+  border-radius: 16px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, .18) 0%, rgba(255, 255, 255, .06) 55%, rgba(250, 0, 115, .08) 100%);
+  backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, .22);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), inset 0 0 22px rgba(255, 255, 255, .05), 0 14px 34px rgba(0, 0, 0, .28);
+  transition: transform .45s cubic-bezier(.22, .61, .36, 1), border-color .35s ease, box-shadow .45s ease, background .45s ease;
+}
+.why-card::before {
+  content: ''; position: absolute; z-index: -1; top: -20%; bottom: -20%; left: 0; width: 55%;
+  background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, .32) 50%, transparent 100%);
+  transform: translateX(-160%) skewX(-18deg); transition: transform 1s ease; pointer-events: none;
+}
+.why-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--pink);
+  background: linear-gradient(150deg, rgba(255, 255, 255, .24) 0%, rgba(255, 255, 255, .08) 55%, rgba(250, 0, 115, .16) 100%);
+  box-shadow: 0 0 0 1px var(--pink), 0 0 30px rgba(250, 0, 115, .5), inset 0 1px 0 rgba(255, 255, 255, .45), 0 20px 44px rgba(0, 0, 0, .35);
+}
+.why-card:hover::before { transform: translateX(380%) skewX(-18deg); }
+.why-icon {
+  display: flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 50%;
+  background: linear-gradient(145deg, #ff2d92, var(--pink)); color: var(--white); box-shadow: 0 8px 20px rgba(250, 0, 115, .45), 0 0 0 5px rgba(250, 0, 115, .16);
+  margin-bottom: 6px; transition: transform .45s cubic-bezier(.22, .61, .36, 1), box-shadow .45s ease;
+}
+.why-card:hover .why-icon { transform: scale(1.12) rotate(-6deg); box-shadow: 0 10px 26px rgba(250, 0, 115, .7), 0 0 0 8px rgba(250, 0, 115, .22); }
+.why-icon .material-symbols-outlined { font-size: 26px; }
+.why-card h3 { color: var(--white); font-size: 19px; font-weight: 600; }
+.why-card p { color: rgba(255, 255, 255, .86); font-size: 14.5px; line-height: 1.65; }
+
+@media (max-width: 1000px) { .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .why-grid { grid-template-columns: 1fr; } .why-card { padding: 28px 22px; } }

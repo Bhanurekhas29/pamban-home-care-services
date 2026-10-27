@@ -1,0 +1,24 @@
+.icon-picker { position: relative; }
+.icon-picker-btn {
+  display: flex; align-items: center; gap: 8px; width: 100%; padding: 7px 10px;
+  border: 1px solid var(--line); border-radius: 6px; background: var(--white);
+  font: 14px var(--font-text); color: var(--navy); cursor: pointer; text-align: left;
+}
+.icon-picker-btn:hover { border-color: var(--pink); }
+.icon-picker-btn .material-symbols-outlined { color: var(--pink); font-size: 22px; }
+.icon-picker-caret { margin-left: auto; color: var(--slate) !important; }
+
+.icon-picker-pop {
+  position: absolute; z-index: 20; top: calc(100% + 6px); left: 0; width: 340px; max-width: 80vw;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 10px;
+  background: var(--white); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(27, 41, 66, .18);
+}
+.icon-picker-pop button {
+  display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 8px 4px;
+  border: 1px solid transparent; border-radius: 8px; background: none; cursor: pointer; color: var(--navy);
+}
+.icon-picker-pop button:hover { background: var(--pink-soft); }
+.icon-picker-pop button.selected { border-color: var(--pink); background: var(--pink-soft); }
+.icon-picker-pop .material-symbols-outlined { font-size: 26px; color: var(--pink); }
+.icon-picker-pop small { font: 11px var(--font-text); color: var(--slate); text-align: center; line-height: 1.2; }

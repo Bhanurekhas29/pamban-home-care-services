@@ -1,0 +1,14 @@
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
+.stat { display: flex; flex-direction: column; gap: 4px; }
+.stat-value { font: 700 34px var(--font-heading); color: var(--pink); }
+.stat-label { font-size: 14px; }
+
+.dash-group { margin-top: 20px; }
+.dash-group h2 { font: 700 15px var(--font-heading); text-transform: uppercase; letter-spacing: 1px; color: var(--slate); margin: 0 0 14px; }
+.dash-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+.dash-link {
+  display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px;
+  font-weight: 600; color: var(--navy); background: var(--white); transition: border-color .15s, box-shadow .15s, color .15s;
+}
+.dash-link .material-symbols-outlined { color: var(--pink); font-size: 22px; }
+.dash-link:hover { border-color: var(--pink); color: var(--pink); box-shadow: 0 6px 16px rgba(250, 0, 115, .12); }

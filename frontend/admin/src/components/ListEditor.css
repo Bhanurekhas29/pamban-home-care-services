@@ -1,0 +1,45 @@
+.list-editor { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+.list-row {
+  padding: 10px 12px 12px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--bg); transition: border-color .12s, opacity .12s;
+}
+
+.list-row-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; color: var(--navy); }
+.list-row-head strong { flex: 1; }
+.list-order { display: flex; align-items: center; gap: 6px; font: 600 13px var(--font-text); color: var(--slate); }
+.list-order select {
+  padding: 4px 8px; border: 1px solid var(--line); border-radius: 6px;
+  font: 600 13px var(--font-text); color: var(--navy); background: var(--white);
+}
+.list-remove {
+  padding: 4px 10px; border: 1px solid var(--line); border-radius: 6px;
+  background: var(--white); color: var(--danger); font: 600 13px var(--font-text); cursor: pointer;
+}
+.list-remove:hover { background: #fef3f2; border-color: #fecdca; }
+
+.list-fields { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.list-field { display: flex; flex-direction: column; gap: 4px; font-size: 12.5px; font-weight: 600; color: var(--slate); }
+.list-field.wide { grid-column: 1 / -1; }
+.list-field input {
+  min-width: 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
+  font: 14px var(--font-text); color: var(--navy); background: var(--white);
+}
+.list-field textarea {
+  min-width: 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; resize: vertical;
+  font: 14px var(--font-text); color: var(--navy); background: var(--white);
+}
+.list-field textarea:focus { outline: 2px solid var(--pink-soft); border-color: var(--pink); }
+.list-field input:focus { outline: 2px solid var(--pink-soft); border-color: var(--pink); }
+.list-field select {
+  min-width: 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
+  font: 14px var(--font-text); color: var(--navy); background: var(--white);
+}
+.list-field select:focus { outline: 2px solid var(--pink-soft); border-color: var(--pink); }
+.list-check label { display: flex; align-items: center; gap: 8px; font: 600 13px var(--font-text); color: var(--slate); cursor: pointer; }
+.list-check input { width: 17px; height: 17px; accent-color: var(--pink); }
+.list-add { align-self: flex-start; }
+
+@media (max-width: 600px) {
+  .list-fields { grid-template-columns: 1fr; }
+  .list-row-head { flex-wrap: wrap; }
+}

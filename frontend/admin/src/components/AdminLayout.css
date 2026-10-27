@@ -1,0 +1,26 @@
+.admin-shell { display: flex; min-height: 100vh; }
+.admin-main { flex: 1; margin-left: var(--sidebar-width); padding: 32px; min-width: 0; }
+
+.page-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
+.page-head h1 { font-size: 26px; }
+
+.mobile-bar { display: none; }
+.sidebar-backdrop { display: none; }
+
+@media (max-width: 800px) {
+  .admin-shell { flex-direction: column; }
+  .admin-main { margin-left: 0; padding: 20px 16px 32px; }
+  .page-head h1 { font-size: 22px; }
+
+  .mobile-bar {
+    position: sticky; top: 0; z-index: 9; height: 56px; display: flex; align-items: center; gap: 12px;
+    padding: 0 12px; background: var(--navy); color: var(--white);
+  }
+  .mobile-bar strong { font: 600 17px var(--font-heading); }
+  .mobile-bar button {
+    display: flex; padding: 6px; border: 0; border-radius: 8px; background: none; color: var(--white); cursor: pointer;
+  }
+  .mobile-bar button:hover { background: rgba(255, 255, 255, .1); }
+
+  .sidebar-backdrop { display: block; position: fixed; inset: 0; z-index: 19; background: rgba(15, 23, 42, .5); }
+}

@@ -1,0 +1,65 @@
+.physio { background: var(--white); position: relative; overflow: hidden; }
+.physio::before {
+  content: ''; position: absolute; top: -90px; right: -80px; width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(250, 0, 115, .12), rgba(250, 0, 115, 0) 70%); pointer-events: none;
+}
+.physio-wrap { position: relative; }
+.physio-head { text-align: center; margin-bottom: 30px; }
+.physio-eyebrow { display: inline-flex; align-items: center; gap: 14px; font-size: 12px; margin-bottom: 14px; }
+.physio-eyebrow span { display: block; width: 64px; height: 2px; background: var(--pink); }
+.physio-head .section-title { max-width: 760px; margin: 0 auto; }
+
+.physio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.physio-card { position: relative; width: 100%; aspect-ratio: 2.4 / 1; min-height: 190px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 26px rgba(27, 41, 66, .14); }
+.physio-card img { width: 100%; height: 100%; object-fit: cover; }
+.physio-fallback {
+  height: 100%; display: flex; align-items: center; justify-content: center; color: var(--pink);
+  background: linear-gradient(135deg, var(--pink-50), #dfe6f5);
+}
+.physio-fallback .material-symbols-outlined { font-size: 64px; opacity: .4; }
+
+.physio-label {
+  position: absolute; left: 12px; bottom: 16px; max-width: calc(100% - 24px); display: flex; align-items: center; gap: 12px;
+  padding: 8px 22px 8px 8px; border-radius: 999px; color: var(--white);
+  font: 600 clamp(15px, 1.5vw, 19px) var(--font-heading); line-height: 1.2; box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
+}
+.physio-label.tone-navy { background: linear-gradient(90deg, #1b2942, #26385a); }
+.physio-label.tone-pink { background: linear-gradient(90deg, #ff1493, #fa0073); }
+.physio-icon {
+  display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; flex-shrink: 0;
+  border-radius: 50%; background: var(--white); color: var(--pink); box-shadow: 0 0 0 3px rgba(255, 255, 255, .35);
+}
+.physio-icon .material-symbols-outlined { font-size: 24px; }
+
+.physio-banner {
+  position: relative; display: flex; align-items: center; justify-content: space-between; gap: 28px; margin-top: 34px;
+  padding: 26px 44px; border-radius: 14px; color: var(--white); overflow: hidden;
+  background: radial-gradient(circle at 12% 20%, rgba(250, 0, 115, .28), transparent 40%), linear-gradient(100deg, #0e1d52, #1a2f78);
+}
+/* an uploaded picture fills the banner as-is. It is anchored near its bottom edge, so tall artwork
+   with decorations in the lower corners (flowers, curves) still shows them in this thin strip */
+.physio-banner.has-image { background-size: cover; background-position: 50% 82%; }
+.physio-banner.has-image::after { display: none; }
+/* keep the words and the button clear of the decorations in the picture's corners (as in the design) */
+.physio-banner.has-image { padding-left: clamp(44px, 10%, 170px); padding-right: clamp(44px, 9%, 160px); }
+/* optional dark layer for ordinary photos, switched on in the admin */
+.physio-banner.darken::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(100deg, rgba(14, 29, 82, .94) 0%, rgba(14, 29, 82, .8) 55%, rgba(26, 47, 120, .55) 100%);
+}
+.physio-banner > * { position: relative; z-index: 1; }
+.physio-banner::after {
+  content: ''; position: absolute; right: -40px; bottom: -70px; width: 240px; height: 240px; border-radius: 50%;
+  border: 2px solid rgba(250, 0, 115, .45); pointer-events: none;
+}
+.physio-banner h3 { color: var(--white); font-size: clamp(19px, 2.2vw, 24px); max-width: 560px; }
+.physio-banner p { margin-top: 8px; font-size: 14.5px; color: rgba(255, 255, 255, .85); max-width: 520px; }
+.physio-banner .btn { position: relative; z-index: 1; flex-shrink: 0; }
+
+@media (max-width: 700px) {
+  .physio-grid { grid-template-columns: 1fr; gap: 18px; }
+  .physio-card { aspect-ratio: 16 / 10; min-height: 0; }
+  .physio-eyebrow span { width: 28px; }
+  .physio-banner, .physio-banner.has-image { flex-direction: column; align-items: flex-start; padding: 26px 22px; }
+  .physio-banner .btn { width: 100%; }
+}

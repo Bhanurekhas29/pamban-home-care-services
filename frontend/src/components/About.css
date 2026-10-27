@@ -1,0 +1,44 @@
+.about { background: var(--white); }
+.about-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; gap: 64px; }
+
+/* the frame wraps the whole photo (nothing is cropped) and the photo is shown large */
+.about-photo-wrap { position: relative; width: min(100%, 520px); justify-self: center; }
+.about-photo {
+  width: 100%; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 24px 50px rgba(27, 41, 66, .18); background: var(--pink-50);
+}
+/* the photo fills the frame's width and keeps its own shape, so none of it is cut off */
+.about-photo img { display: block; width: 100%; height: auto; max-height: 780px; object-fit: contain; }
+.photo-placeholder {
+  width: min(100%, 520px); aspect-ratio: 2 / 3; display: flex; align-items: center; justify-content: center; color: var(--pink);
+  background: linear-gradient(135deg, var(--pink-50), var(--pink-100));
+}
+.photo-placeholder .material-symbols-outlined { font-size: 64px; opacity: .5; }
+.about-badge {
+  position: absolute; right: -26px; bottom: -24px; display: flex; align-items: center; gap: 12px; max-width: 250px;
+  padding: 14px 18px; border-radius: 12px; background: var(--navy); color: var(--white);
+  font: 500 14.5px var(--font-text); box-shadow: 0 16px 34px rgba(27, 41, 66, .35);
+}
+.badge-icon {
+  display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: 10px; background: var(--pink);
+}
+.badge-icon .material-symbols-outlined { font-size: 22px; }
+
+.about-copy .section-title { margin-top: 12px; }
+.about-text { margin-top: 20px; font-size: 17px; color: var(--slate); max-width: 520px; }
+.about-list { list-style: none; margin: 26px 0 32px; padding: 0; display: grid; gap: 16px; }
+.about-list li { display: flex; align-items: center; gap: 14px; font: 600 18px var(--font-heading); color: var(--navy); }
+.tick {
+  display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; flex-shrink: 0;
+  border-radius: 9px; background: var(--pink-50); color: var(--pink);
+}
+.tick .material-symbols-outlined { font-size: 20px; }
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 44px; }
+  .about-photo-wrap { width: min(100%, 440px); }
+  .about-photo img { max-height: none; }
+  .about-badge { right: 12px; bottom: -22px; }
+  .about-list li { font-size: 16.5px; }
+}

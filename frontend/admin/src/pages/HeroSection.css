@@ -1,0 +1,12 @@
+.hero-form { display: flex; flex-direction: column; gap: 18px; max-width: 820px; }
+.hero-form h2 { font-size: 18px; margin-bottom: 16px; }
+.heading-preview {
+  padding: 12px 14px; border: 1px dashed var(--line); border-radius: 8px; background: var(--bg);
+  font: 600 20px var(--font-heading); color: var(--navy); white-space: pre-line;
+}
+.heading-preview .pink { color: var(--pink); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+
+@media (max-width: 700px) {
+  .two-col { grid-template-columns: 1fr; }
+}

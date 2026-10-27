@@ -1,0 +1,64 @@
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50; height: var(--header-height);
+  transition: background .25s, box-shadow .25s; color: var(--white);
+}
+.site-header.is-solid { background: var(--white); box-shadow: 0 4px 24px rgba(27, 41, 66, .1); color: var(--navy); }
+.header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+/* the logo picture is tall and narrow, so its frame is tall too (a square frame made it look tiny) */
+.brand-logo {
+  display: flex; align-items: center; justify-content: center; height: 70px; min-width: 56px; flex-shrink: 0;
+  background: var(--white); border-radius: 12px; padding: 5px 8px; box-shadow: 0 4px 14px rgba(0, 0, 0, .12);
+}
+.brand-logo img { height: 100%; width: auto; max-width: 100%; object-fit: contain; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.05; min-width: 0; }
+.brand-text strong { font: 700 29px var(--font-heading); color: var(--pink); white-space: nowrap; }
+.brand-text small { font: 600 12px var(--font-heading); letter-spacing: 3.4px; color: var(--pink); margin-top: 4px; }
+
+.nav { display: flex; align-items: center; gap: 30px; }
+.nav a:not(.btn) { position: relative; font: 600 17px var(--font-heading); white-space: nowrap; opacity: .95; transition: color .15s; }
+.nav a:not(.btn):hover { color: var(--pink); }
+/* the page being read is pink with a pink line under it */
+.nav a:not(.btn)::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -9px; height: 3px; border-radius: 3px;
+  background: var(--pink); transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+}
+.nav a.active:not(.btn) { color: var(--pink); opacity: 1; }
+.nav a.active:not(.btn)::after { transform: scaleX(1); }
+.nav a:not(.btn):hover::after { transform: scaleX(1); }
+.nav-cta { padding: 10px 20px; font-size: 14px; white-space: nowrap; }
+.site-header:not(.is-solid) .nav-cta { box-shadow: none; }
+
+.nav-toggle {
+  display: none; align-items: center; justify-content: center; width: 44px; height: 44px; border: 0;
+  border-radius: 10px; background: transparent; color: inherit; cursor: pointer;
+}
+.nav-toggle .material-symbols-outlined { font-size: 28px; }
+
+@media (max-width: 1240px) {
+  .nav { gap: 20px; }
+  .nav a:not(.btn) { font-size: 15.5px; }
+}
+
+@media (max-width: 1000px) {
+  .nav { gap: 16px; }
+  .nav a:not(.btn) { font-size: 14.5px; }
+}
+
+@media (max-width: 860px) {
+  :root { --header-height: 72px; }
+  .brand-logo { height: 54px; min-width: 44px; padding: 4px 6px; }
+  .brand-text strong { font-size: 21px; }
+  .brand-text small { font-size: 9.5px; letter-spacing: 2.6px; }
+  .nav-toggle { display: flex; }
+  .nav {
+    position: absolute; top: var(--header-height); left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--white); color: var(--navy); padding: 8px 18px 18px; box-shadow: 0 18px 30px rgba(27, 41, 66, .15);
+    display: none;
+  }
+  .nav.is-open { display: flex; }
+  .nav a:not(.btn) { padding: 14px 4px; border-bottom: 1px solid var(--line); font-size: 17px; }
+  .nav a:not(.btn)::after { bottom: -1px; }
+  .nav-cta { margin-top: 14px; padding: 13px; }
+}

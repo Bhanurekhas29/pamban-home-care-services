@@ -1,0 +1,40 @@
+.footer { background: #0f1b33; color: rgba(255, 255, 255, .85); padding-top: 44px; }
+.footer-grid { display: grid; grid-template-columns: 1.3fr .9fr 1.25fr 1.2fr 1.1fr; gap: 36px; padding-bottom: 36px; }
+
+.footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.logo-box { display: flex; align-items: center; justify-content: center; height: 54px; width: 54px; flex-shrink: 0; border-radius: 10px; background: var(--white); padding: 4px; }
+.logo-box img { max-height: 100%; width: auto; object-fit: contain; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.05; }
+.logo-text strong { font: 700 22px var(--font-heading); color: var(--white); }
+.logo-text small { font: 600 10px var(--font-heading); letter-spacing: 2.6px; color: var(--pink); margin-top: 3px; }
+.footer-brand p { font: 600 16px/1.5 var(--font-heading); color: var(--white); max-width: 230px; }
+.footer-social { display: flex; gap: 10px; margin-top: 22px; }
+.footer-social a {
+  display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, .28); color: rgba(255, 255, 255, .85); transition: background .15s, border-color .15s, color .15s;
+}
+.footer-social a:hover { background: var(--pink); border-color: var(--pink); color: var(--white); }
+
+.footer-col h4 { font: 700 13px var(--font-heading); letter-spacing: 1.4px; color: #ff4f9b; margin-bottom: 16px; }
+.footer-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.footer-col a { font: 500 17px/1.3 var(--font-heading); color: var(--white); transition: color .15s; }
+.footer-col a:hover { color: #ff4f9b; }
+.footer-contact li { display: flex; align-items: flex-start; gap: 10px; font: 500 17px/1.3 var(--font-heading); color: var(--white); }
+.footer-contact .material-symbols-outlined { font-size: 18px; color: var(--pink); margin-top: 2px; }
+.footer-contact li span:last-child { overflow-wrap: anywhere; }
+
+/* the copyright line, with the credit line directly underneath it */
+.footer-bottom { padding-top: 18px; padding-bottom: 20px; border-top: 1px solid rgba(255, 255, 255, .12); text-align: center; display: flex; flex-direction: column; }
+.footer-bottom p { font-size: 13.5px; color: rgba(255, 255, 255, .55); }
+.footer-bottom .copyright { padding-bottom: 16px; }
+/* a line above the credit makes it a separate strip under the copyright line */
+.footer-bottom .credit { font-size: 13px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, .12); }
+.credit a { color: rgba(255, 255, 255, .8); text-decoration: underline; text-underline-offset: 3px; }
+.credit a:hover { color: var(--pink); }
+
+@media (max-width: 1060px) { .footer-grid { grid-template-columns: repeat(3, 1fr); } .footer-brand { grid-column: 1 / -1; } .footer-brand p { max-width: 420px; } }
+@media (max-width: 640px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px 20px; }
+  .footer-contact { grid-column: 1 / -1; }
+  .footer-col a, .footer-contact li { font-size: 15.5px; }
+}

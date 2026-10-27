@@ -1,0 +1,60 @@
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-text);
+  color: var(--slate);
+  background: var(--white);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip; /* things sliding in from the side must never make the page scroll sideways */
+}
+
+h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--navy); margin: 0; line-height: 1.15; }
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* a section can narrow itself by setting --container-max on its own container element */
+.container { width: 100%; max-width: var(--container-max, var(--container)); margin: 0 auto; padding: 0 var(--gutter); }
+section[id] { scroll-margin-top: calc(var(--header-height) - 8px); }
+/* pieces sliding in from the side are clipped here, so they can never widen the page */
+main, .footer { overflow-x: clip; }
+
+/* grid columns must be allowed to shrink below a photo's full size, or big photos push a column wider than the screen */
+.services-grid > *, .physio-grid > *, .about-grid > *, .pro-grid > *, .promises-grid > *,
+.contact-grid > *, .google-box > *, .service-card.is-wide > * { min-width: 0; }
+/* space above and below each section: 60px on a big screen (it was 88px), less on smaller ones */
+.section { padding: clamp(40px, 4.2vw, 60px) 0; }
+
+.eyebrow {
+  font: 700 13px var(--font-heading); letter-spacing: 2.4px; text-transform: uppercase; color: var(--pink);
+}
+.section-title { font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -.5px; }
+.pink { color: var(--pink); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 24px; border-radius: 8px; border: 1px solid transparent; cursor: pointer;
+  font: 600 15px var(--font-heading); transition: transform .15s, background .15s, box-shadow .15s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: var(--pink); color: var(--white); box-shadow: 0 8px 20px rgba(250, 0, 115, .28); }
+.btn-primary:hover { background: var(--pink-dark); }
+.btn-outline { background: transparent; color: var(--white); border-color: rgba(255, 255, 255, .55); }
+.btn-outline:hover { background: rgba(255, 255, 255, .12); }
+.btn-outline-pink { background: var(--white); color: var(--pink); border-color: var(--pink); }
+.btn-outline-pink:hover { background: var(--pink-50); }
+.btn .material-symbols-outlined { font-size: 20px; }
+
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400; user-select: none; }
+.icon-filled { font-variation-settings: 'FILL' 1, 'wght' 400; }
+
+@media (max-width: 768px) {
+  body { font-size: 15px; }
+  .section { padding: 42px 0; }
+  section[id] { scroll-margin-top: 64px; }
+}

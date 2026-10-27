@@ -1,0 +1,30 @@
+-- Upgrade for databases created from the first schema.sql
+USE pamban_home_care;
+
+ALTER TABLE admins
+  ADD COLUMN email VARCHAR(120) NULL UNIQUE AFTER username,
+  ADD COLUMN is_active TINYINT(1) DEFAULT 1,
+  ADD COLUMN reset_token_hash VARCHAR(64) NULL,
+  ADD COLUMN reset_token_expires DATETIME NULL;
+
+CREATE TABLE IF NOT EXISTS site_settings (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  site_name VARCHAR(150) NOT NULL DEFAULT 'Pamban Swami',
+  tagline VARCHAR(100) DEFAULT 'HOME CARE',
+  header_logo_url VARCHAR(255),
+  footer_logo_url VARCHAR(255),
+  cta_label VARCHAR(50) DEFAULT 'Contact Us',
+  cta_link VARCHAR(255) DEFAULT '#contact',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS menu_items (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  label VARCHAR(80) NOT NULL,
+  link VARCHAR(255) NOT NULL,
+  sort_order INT DEFAULT 0,
+  is_active TINYINT(1) DEFAULT 1,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);

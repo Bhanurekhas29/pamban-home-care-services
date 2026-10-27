@@ -1,0 +1,16 @@
+:root {
+  --pink: #fa0073;
+  --pink-dark: #d10062;
+  --pink-100: #ffe3ef;
+  --pink-50: #fff1f7;
+  --navy: #1b2942;
+  --navy-deep: #0f2350;
+  --slate: #4b5669;
+  --line: #e6e9f0;
+  --white: #ffffff;
+  --font-heading: 'Outfit', sans-serif;
+  --font-text: 'Manrope', sans-serif;
+  --container: 1800px; /* the page stops growing here, so ultra-wide monitors keep a readable width */
+  --gutter: clamp(20px, 6.5vw, 120px); /* space between the page edge and the content: about 6.5% each side */
+  --header-height: 88px;
+}

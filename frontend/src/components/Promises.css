@@ -1,0 +1,36 @@
+.promises { background: linear-gradient(180deg, #ffeef5, #fff6fa); position: relative; overflow: hidden; }
+.promises::before {
+  content: ''; position: absolute; left: -90px; bottom: -110px; width: 360px; height: 360px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(250, 0, 115, .1), rgba(250, 0, 115, 0) 70%); pointer-events: none;
+}
+/* an uploaded picture replaces the soft pink background and shows as uploaded */
+/* wide artwork fills the width; sitting a little high keeps the corner decorations (top right and bottom left) in view */
+.promises.has-bg { background-color: var(--pink-50); background-size: cover; background-position: 50% 15%; background-repeat: no-repeat; }
+/* on phones the section is tall and narrow, so show the artwork's top-right corner instead of its empty middle */
+@media (max-width: 900px) { .promises.has-bg { background-position: 100% 0; } }
+.promises.has-bg::before { display: none; }
+/* optional light layer for ordinary photos, switched on in the admin */
+.promises.soft-layer::after { content: ''; position: absolute; inset: 0; background: rgba(255, 255, 255, .72); pointer-events: none; }
+.promises-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 5fr 7fr; align-items: center; gap: 48px; }
+.promises-eyebrow { font-size: 11.5px; letter-spacing: 2.4px; margin-bottom: 14px; }
+.promises-text { margin-top: 16px; font-size: 16.5px; max-width: 360px; }
+
+.promise-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.promise-card {
+  position: relative; display: flex; gap: 14px; padding: 22px 22px 22px 20px; border-radius: 14px; overflow: hidden;
+  background: rgba(255, 255, 255, .85); border: 1px solid #ffd3e6; box-shadow: 0 6px 18px rgba(250, 0, 115, .06);
+}
+.promise-card::after {
+  content: ''; position: absolute; top: 0; right: 0; width: 22px; height: 22px; background: var(--pink);
+  clip-path: polygon(0 0, 100% 0, 100% 100%); border-top-right-radius: 14px;
+}
+.promise-icon {
+  display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; flex-shrink: 0; margin-top: 3px;
+  border-radius: 50%; border: 2px solid var(--pink); color: var(--pink);
+}
+.promise-icon .material-symbols-outlined { font-size: 18px; }
+.promise-card h3 { font-size: 19px; font-weight: 600; padding-right: 14px; }
+.promise-card p { margin-top: 6px; font-size: 14px; line-height: 1.55; }
+
+@media (max-width: 900px) { .promises-grid { grid-template-columns: 1fr; gap: 32px; } .promises-text { max-width: none; } }
+@media (max-width: 560px) { .promise-cards { grid-template-columns: 1fr; } }

@@ -1,0 +1,101 @@
+.hero {
+  position: relative; min-height: 680px; display: flex; align-items: center; color: var(--white);
+  padding: calc(var(--header-height) + 40px) 0 56px;
+  background: linear-gradient(120deg, #2b3a58 0%, #1b2942 55%, #3a2f52 100%) center / cover no-repeat;
+}
+.hero-shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(27, 41, 66, .92) 0%, rgba(27, 41, 66, .72) 45%, rgba(27, 41, 66, .3) 100%);
+}
+/* the card keeps a fixed width so the left side has room for the three points in one line */
+.hero-inner { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, 400px); align-items: center; gap: 48px; }
+
+.hero-eyebrow { font-size: 14px; letter-spacing: 1.6px; margin-bottom: 14px; }
+.hero h1 { color: var(--white); font-size: clamp(38px, 5.4vw, 66px); font-weight: 700; letter-spacing: -1.5px; }
+.hero-text { margin-top: 22px; max-width: 520px; font-size: 18px; line-height: 1.65; color: rgba(255, 255, 255, .88); }
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+/* the three points sit side by side on one straight line (stacked in a straight column on phones) */
+.hero-features {
+  display: flex; flex-wrap: nowrap; align-items: center; gap: 14px 24px; list-style: none; margin: 36px 0 0; padding: 26px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, .22);
+}
+.hero-features li { display: flex; align-items: center; gap: 10px; white-space: nowrap; font: 600 15px var(--font-heading); }
+.chip {
+  display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; flex-shrink: 0; border-radius: 9px;
+  background: var(--pink); box-shadow: 0 6px 16px rgba(250, 0, 115, .4);
+}
+.chip .material-symbols-outlined { font-size: 21px; }
+
+.hero-card {
+  position: relative; padding: 22px 22px 0; border-radius: 22px; overflow: hidden; max-width: 400px; justify-self: end; width: 100%;
+  background: linear-gradient(160deg, rgba(255, 255, 255, .2), rgba(250, 0, 115, .16)), rgba(255, 255, 255, .08);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(255, 72, 160, .95);
+  /* pink glow: a bright rim, a soft halo around the box, and a pink tint glowing inward from the edges */
+  box-shadow:
+    0 0 0 1px rgba(250, 0, 115, .5),
+    0 0 22px 3px rgba(250, 0, 115, .6),
+    0 0 64px 12px rgba(250, 0, 115, .36),
+    inset 0 0 38px rgba(250, 0, 115, .3),
+    0 26px 50px rgba(0, 0, 0, .28);
+}
+.hero-card-head { display: flex; gap: 16px; align-items: center; }
+.hero-card-icon {
+  display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; flex-shrink: 0;
+  border-radius: 50%; background: var(--white); color: var(--pink); box-shadow: 0 0 0 5px rgba(255, 255, 255, .2);
+}
+.hero-card-icon .material-symbols-outlined { font-size: 30px; }
+.hero-card .tagline { font: italic 500 19px var(--font-heading); color: rgba(255, 255, 255, .92); }
+.hero-card .heading { font: 700 22px var(--font-heading); color: var(--white); }
+.hero-card .highlight { font: 700 22px var(--font-heading); color: var(--pink); }
+.hero-card-text {
+  margin-top: 16px; padding-top: 14px; border-top: 1px dashed rgba(255, 255, 255, .4);
+  font-size: 14px; color: rgba(255, 255, 255, .85);
+}
+.hero-options { display: grid; gap: 12px; margin-top: 16px; }
+.hero-option {
+  display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 14px; background: var(--white); color: var(--navy);
+  transition: transform .15s, box-shadow .15s;
+}
+.hero-option:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0, 0, 0, .18); }
+.opt-icon {
+  display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; flex-shrink: 0;
+  border-radius: 12px; background: var(--pink-50); color: var(--pink);
+}
+.opt-body { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.opt-body strong { font: 700 17px var(--font-heading); }
+.opt-body small { font-size: 12.5px; color: var(--slate); line-height: 1.35; }
+.opt-go {
+  display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%;
+  border: 1.5px solid var(--pink); color: var(--pink); flex-shrink: 0;
+}
+.opt-go .material-symbols-outlined { font-size: 20px; }
+.hero-card-footer {
+  display: flex; align-items: center; justify-content: center; gap: 8px; margin: 18px -22px 0; padding: 14px 18px;
+  background: linear-gradient(90deg, #e6006a, var(--pink)); font: 700 15px var(--font-heading);
+}
+.hero-card-footer .material-symbols-outlined { font-size: 18px; }
+
+/* two-column layout on narrower laptops: slightly smaller points so they still fit on one line */
+@media (min-width: 1161px) and (max-width: 1220px) {
+  .hero-features { gap: 12px 16px; }
+  .hero-features li { gap: 7px; font-size: 13px; }
+  .chip { width: 32px; height: 32px; border-radius: 8px; }
+  .chip .material-symbols-outlined { font-size: 18px; }
+}
+
+/* below 1160px the card moves under the text, so the three points always have the full width */
+@media (max-width: 1160px) {
+  .hero { min-height: 0; padding-bottom: 48px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+  .hero-card { justify-self: stretch; max-width: none; }
+  .hero-shade { background: linear-gradient(180deg, rgba(27, 41, 66, .9) 0%, rgba(27, 41, 66, .8) 100%); }
+}
+@media (max-width: 560px) {
+  .hero { padding-top: calc(var(--header-height) + 24px); }
+  .hero-text { font-size: 16px; }
+  .hero-buttons .btn { flex: 1 1 100%; }
+}
+@media (max-width: 640px) {
+  .hero-features { flex-direction: column; align-items: flex-start; gap: 14px; }
+}

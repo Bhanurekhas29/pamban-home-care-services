@@ -1,0 +1,94 @@
+/* =====================================================================
+   Soft motion for the whole website.
+   1. The hero animates once when the page opens.
+   2. Everything else fades in gently as it scrolls into view (see hooks/useScrollReveal.js).
+   3. Hover effects (only on devices with a mouse).
+   People who switch off animations on their device see none of this.
+   ===================================================================== */
+
+/* ---------- keyframes ---------- */
+@keyframes fade-up    { from { opacity: 0; transform: translateY(22px); }  to { opacity: 1; transform: none; } }
+@keyframes slide-in-r { from { opacity: 0; transform: translateX(48px); }  to { opacity: 1; transform: none; } }
+@keyframes drop-in    { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: none; } }
+@keyframes rise       { from { opacity: 0; transform: translateY(24px); }  to { opacity: 1; transform: none; } }
+@keyframes from-left  { from { opacity: 0; transform: translateX(-36px); } to { opacity: 1; transform: none; } }
+@keyframes from-right { from { opacity: 0; transform: translateX(36px); }  to { opacity: 1; transform: none; } }
+
+/* ---------- 1. when the page opens ---------- */
+.site-header { animation: drop-in .8s cubic-bezier(.22, .61, .36, 1) backwards; }
+.hero-eyebrow { animation: fade-up .8s ease .10s backwards; }
+.hero h1 { animation: fade-up .9s ease .22s backwards; }
+.hero-text { animation: fade-up .9s ease .36s backwards; }
+.hero-buttons { animation: fade-up .9s ease .50s backwards; }
+.hero-features li { animation: fade-up .8s ease backwards; }
+.hero-features li:nth-child(1) { animation-delay: .68s; }
+.hero-features li:nth-child(2) { animation-delay: .78s; }
+.hero-features li:nth-child(3) { animation-delay: .88s; }
+.hero-features li:nth-child(n+4) { animation-delay: .98s; }
+.hero-card { animation: slide-in-r 1s cubic-bezier(.22, .61, .36, 1) .40s backwards; }
+
+/* ---------- 2. as you scroll ---------- */
+.reveal { opacity: 0; }
+.reveal.is-visible { opacity: 1; animation-duration: .7s; animation-timing-function: cubic-bezier(.22, .61, .36, 1); animation-fill-mode: backwards; animation-delay: var(--reveal-delay, 0ms); }
+.reveal-up.is-visible    { animation-name: rise; }
+.reveal-left.is-visible  { animation-name: from-left; }
+.reveal-right.is-visible { animation-name: from-right; }
+
+/* ---------- 3. on hover ---------- */
+@media (hover: hover) {
+  /* photos grow inside their frame (Services and Physiotherapy cards) */
+  .service-photo img, .physio-card > img { transition: transform .9s cubic-bezier(.22, .61, .36, 1); will-change: transform; }
+  .service-card:hover .service-photo img, .physio-card:hover > img { transform: scale(1.1); }
+  .service-fallback .material-symbols-outlined, .physio-fallback .material-symbols-outlined { transition: transform .9s cubic-bezier(.22, .61, .36, 1); }
+  .service-card:hover .service-fallback .material-symbols-outlined, .physio-card:hover .physio-fallback .material-symbols-outlined { transform: scale(1.18); }
+  .service-label, .physio-label { transition: transform .5s cubic-bezier(.22, .61, .36, 1), box-shadow .5s ease; }
+  .service-card:hover .service-label, .physio-card:hover .physio-label { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(0, 0, 0, .3); }
+  .physio-card { transition: box-shadow .5s ease, transform .5s cubic-bezier(.22, .61, .36, 1); }
+  .physio-card:hover { transform: translateY(-4px); box-shadow: 0 18px 38px rgba(27, 41, 66, .22); }
+
+  /* the points: they nudge, and their little icons light up */
+  .hero-features li { transition: transform .4s ease; }
+  .hero-features li:hover { transform: translateY(-3px); }
+  .chip { transition: transform .4s ease, box-shadow .4s ease; }
+  .hero-features li:hover .chip { transform: scale(1.1) rotate(-5deg); box-shadow: 0 10px 24px rgba(250, 0, 115, .65); }
+
+  .about-list li { transition: transform .4s ease; }
+  .about-list li:hover { transform: translateX(8px); }
+  .tick { transition: transform .4s ease, background-color .4s ease, color .4s ease; }
+  .about-list li:hover .tick { transform: scale(1.12); background: var(--pink); color: var(--white); }
+
+  .promise-card { transition: transform .45s cubic-bezier(.22, .61, .36, 1), border-color .4s ease, box-shadow .45s ease, background-color .4s ease; }
+  .promise-card:hover { transform: translateY(-6px); border-color: var(--pink); background: var(--white); box-shadow: 0 16px 34px rgba(250, 0, 115, .18); }
+  .promise-icon { transition: transform .4s ease, background-color .4s ease, color .4s ease; }
+  .promise-card:hover .promise-icon { transform: scale(1.14); background: var(--pink); color: var(--white); }
+
+  .how-circle { transition: transform .45s cubic-bezier(.22, .61, .36, 1), box-shadow .45s ease, background-color .45s ease; }
+  .how-step:hover .how-circle { transform: translateY(-6px) scale(1.07); background: var(--white); box-shadow: 0 14px 30px rgba(250, 0, 115, .3); }
+  .how-step h3 { transition: color .35s ease; }
+  .how-step:hover h3 { color: var(--pink); }
+
+  .contact-info li { transition: transform .4s ease; }
+  .contact-info li:hover { transform: translateX(6px); }
+  .info-icon { transition: transform .4s ease, box-shadow .4s ease; }
+  .contact-info li:hover .info-icon { transform: scale(1.12); box-shadow: 0 0 0 7px rgba(250, 0, 115, .3); }
+
+  .google-card { transition: transform .45s cubic-bezier(.22, .61, .36, 1), box-shadow .45s ease; }
+  .google-card:hover { transform: translateY(-5px); box-shadow: 0 18px 38px rgba(27, 41, 66, .14); }
+
+  .services-cta { transition: transform .45s cubic-bezier(.22, .61, .36, 1), box-shadow .45s ease; }
+  .services-cta:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(250, 0, 115, .18); }
+
+  /* buttons: arrows slide, links in the footer nudge */
+  .btn .material-symbols-outlined { transition: transform .35s ease; }
+  .btn:hover .material-symbols-outlined { transform: translateX(5px); }
+  .footer-col a { display: inline-block; transition: color .3s ease, transform .35s ease; }
+  .footer-col li > a:hover { transform: translateX(6px); }
+  .footer-social a { transition: transform .35s ease, background-color .3s ease, border-color .3s ease, color .3s ease; }
+  .footer-social a:hover { transform: translateY(-4px); }
+}
+
+/* ---------- people who prefer no motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1 !important; }
+}
