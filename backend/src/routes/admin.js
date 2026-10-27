@@ -1,3 +1,5 @@
+const path = require('path');
+const crypto = require('crypto');
 const router = require('express').Router();
 const auth = require('../middleware/auth');
 const upload = require('../middleware/upload');
@@ -18,7 +20,7 @@ const contact = require('../controllers/contactController');
 const footer = require('../controllers/footerController');
 const seo = require('../controllers/seoController');
 const floatingIcon = require('../controllers/floatingIconController');
-const { MenuItem, Service, PhysiotherapyTreatment, FloatingIcon, Testimonial, Enquiry } = require('../models');
+const { MenuItem, Service, PhysiotherapyTreatment, FloatingIcon, Testimonial, Enquiry, UploadedFile } = require('../models');
 
 // public auth routes
 router.post('/login', authCtrl.login);
@@ -30,9 +32,11 @@ router.use(auth);
 router.get('/me', authCtrl.me);
 router.post('/change-password', authCtrl.changePassword);
 
-router.post('/upload', upload.single('file'), (req, res) => {
+router.post('/upload', upload.single('file'), async (req, res) => {
   if (!req.file) return res.status(400).json({ message: 'No file uploaded' });
-  res.status(201).json({ url: `/uploads/${req.file.filename}` });
+  const filename = `${Date.now()}-${crypto.randomBytes(4).toString('hex')}${path.extname(req.file.originalname).toLowerCase()}`;
+  await UploadedFile.create({ filename, mimeType: req.file.mimetype, data: req.file.buffer });
+  res.status(201).json({ url: `/uploads/${filename}` });
 });
 
 router.get('/stats', async (req, res) => {

@@ -227,9 +227,16 @@ const Enquiry = sequelize.define('Enquiry', {
   status: { type: DataTypes.ENUM('new', 'contacted', 'closed'), defaultValue: 'new' },
 }, { tableName: 'enquiries' });
 
+// photos uploaded in the admin live in the database, so they survive restarts on hosts with a temporary disk
+const UploadedFile = sequelize.define('UploadedFile', {
+  filename: { type: DataTypes.STRING(80), primaryKey: true },
+  mimeType: { type: DataTypes.STRING(60), allowNull: false, field: 'mime_type' },
+  data: { type: DataTypes.BLOB('long'), allowNull: false },
+}, { tableName: 'uploaded_files' });
+
 Service.hasMany(Enquiry, { foreignKey: 'serviceId', onDelete: 'SET NULL' });
 Enquiry.belongsTo(Service, { foreignKey: 'serviceId' });
 
 module.exports = { sequelize, Admin, SiteSetting, HeroSection, AboutSection, ServicesSection,
   PhysiotherapySection, PhysiotherapyTreatment, WhyChooseSection, ProfessionalCareSection, PromisesSection,
-  HowItWorksSection, GoogleSection, ContactSection, FooterSection, FloatingIcon, SeoSetting, MenuItem, Service, Testimonial, Enquiry };
+  HowItWorksSection, GoogleSection, ContactSection, FooterSection, FloatingIcon, SeoSetting, MenuItem, Service, Testimonial, Enquiry, UploadedFile };
