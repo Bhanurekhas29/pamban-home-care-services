@@ -11,6 +11,8 @@ const sequelize = new Sequelize(
     dialect: 'mysql',
     logging: false,
     define: { underscored: true },
+    // hosted databases such as TiDB Cloud only accept secure connections: set DB_SSL=true
+    dialectOptions: process.env.DB_SSL === 'true' ? { ssl: { minVersion: 'TLSv1.2', rejectUnauthorized: true } } : {},
   }
 );
 
